@@ -5,7 +5,7 @@
 [![CI](https://github.com/timeverse-studio/timeverse-plugin-search/actions/workflows/ci.yml/badge.svg)](https://github.com/timeverse-studio/timeverse-plugin-search/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-从多个来源搜索可安装的技能包和 MCP 服务器的开放工具。
+从 SkillHub、Smithery、MCP Registry、GitHub、魔搭社区、mcp.so、mcp.aibase.cn、mcpmarket.cn 及全网搜索等来源搜索可安装的技能包和 MCP 服务器的开放工具。
 
 ## Tools
 
