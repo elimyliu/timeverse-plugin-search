@@ -19,6 +19,7 @@
 from __future__ import annotations
 
 import asyncio
+import json
 import logging
 from typing import Any
 
@@ -108,11 +109,15 @@ async def _search_github(
                         "download_url": f"{item.get('html_url', '')}/archive/refs/heads/main.zip",
                         "stars": item.get("stargazers_count", 0),
                         "tags": item.get("topics", []),
-                        "author": (item.get("owner") or {}).get("login", ""),
+                        "author": item.get("author") or (
+                            item["owner"].get("login", "")
+                            if isinstance(item.get("owner"), dict)
+                            else (item.get("owner", "") or "")
+                        ),
                         "version": "latest",
                         "trust_level": "community",
                     })
-            except httpx.HTTPError as e:
+            except (httpx.HTTPError, json.JSONDecodeError) as e:
                 logger.warning("GitHub search failed: %s", e)
 
     return results
@@ -179,7 +184,7 @@ async def _search_rest_api(
             resp = await client.get(url, params=params)
             resp.raise_for_status()
             data = resp.json()
-    except httpx.HTTPError as e:
+    except (httpx.HTTPError, json.JSONDecodeError) as e:
         logger.warning("REST API search failed for %s: %s", source.id, e)
         return []
 
