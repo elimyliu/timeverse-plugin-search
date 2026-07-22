@@ -241,7 +241,11 @@ def _parse_rest_response(
             "config_schema": item.get("config_schema") or item.get("schema"),
             "stars": item.get("stars") or item.get("star_count", 0),
             "tags": item.get("tags") or item.get("keywords", []),
-            "author": item.get("author") or item.get("owner", {}).get("login", ""),
+            "author": item.get("author") or (
+                item["owner"].get("login", "")
+                if isinstance(item.get("owner"), dict)
+                else (item.get("owner", "") or "")
+            ),
             "version": item.get("version", "latest"),
             "trust_level": item.get("trust_level", "community"),
         })
