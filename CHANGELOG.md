@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.1] - 2026-07-22
+
+### Fixed
+- 修复 MCP SDK 版本变更导致的 `stdio_server` 导入路径错误
+- 修复 REST API 响应中 `owner` 字段为字符串时抛出的 `'str' object has no attribute 'get'` 错误
+
 ## [0.1.0] - 2026-07-21
 
 ### Added

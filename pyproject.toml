@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "timeverse-plugin-search"
-version = "0.1.0"
+version = "0.1.1"
 description = "从多个来源搜索可安装的技能包和 MCP 服务器，提供分层降级搜索策略"
 readme = "README.md"
 license = { text = "MIT" }
